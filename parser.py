@@ -29,7 +29,8 @@ def convert_to_json(coordinates_list, output_json):
         return
 
     try:
-        json_output = json.dumps(coordinates_list, indent=4)
+        wrapped_coordinates = {"customCoordinates": coordinates_list}
+        json_output = json.dumps(wrapped_coordinates, indent=4)        
         output_json.delete("1.0", END)
         output_json.insert(END, json_output)
     except Exception as e:
